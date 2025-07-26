@@ -1,15 +1,10 @@
 using UnityEngine;
-using Game;
 
-namespace Game.Player
+namespace Player
 {
-    public interface IPlayerView : IView
-    {
-        
-    }
-    
     public class PlayerView : MonoBehaviour, IPlayerView
     {
+        public Transform Transform => transform;
         public void Enable()
         {
             gameObject.SetActive(true);

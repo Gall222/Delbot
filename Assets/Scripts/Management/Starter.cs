@@ -1,10 +1,13 @@
+using UI;
 using UnityEngine;
-using Game.Player;
 
 namespace Management
 {
     public class Starter : MonoBehaviour
     {
+        public CanvasHandler canvasHandler;
+        public SceneData sceneData;
+        
         private void Awake()
         {
             CreatePlayerPresenter();
@@ -13,6 +16,7 @@ namespace Management
         private void CreatePlayerPresenter()
         {
             var playerPresenter = PlayerManager.GetPlayerPresenter();
+            playerPresenter.Initiate(canvasHandler, sceneData);
         }
     }
 }

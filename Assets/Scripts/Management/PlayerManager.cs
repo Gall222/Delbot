@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.Player;
+using Player;
 
 namespace Management
 {
@@ -14,7 +14,7 @@ namespace Management
             if (_playerView == null)
             {
                 var prefab = Resources.Load<PlayerView>(nameof(PlayerView));
-                _playerView = Object.Instantiate<PlayerView>(prefab, Vector3.zero, Quaternion.identity);
+                _playerView = Object.Instantiate(prefab, Vector3.zero, Quaternion.identity);
             }
 
             return _playerView;
