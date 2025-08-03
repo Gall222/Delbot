@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8987fa2f07a4cf384bdd722dacbbd0, type: 3}
+  m_Name: Cargo
+  m_EditorClassIdentifier: 
+  "\u0441argoList":
+  - {fileID: -9164710509188181818, guid: 116caafe30f8048c38350beadc2b6ed8, type: 3}

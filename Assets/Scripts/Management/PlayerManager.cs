@@ -1,43 +1,78 @@
+using Data;
 using UnityEngine;
 using Player;
+using Unity.VisualScripting;
+using CargoView = Player.Cargo.View;
 
 namespace Management
 {
     public class PlayerManager 
     {
         private static IPlayerView _playerView;
-        private static PlayerModel _playerModel;
-        private static PlayerPresenter _playerPresenter;
+        private static Model _model;
+        private static Presenter _presenter;
+        private static CargoView _activeCargo;
         
         public static IPlayerView GetPlayerView()
         {
-            if (_playerView == null)
+            if (_playerView != null) return _playerView;
+            
+            var prefab = Resources.Load<View>("Prefabs/Player");
+            if (prefab == null)
             {
-                var prefab = Resources.Load<PlayerView>(nameof(PlayerView));
-                _playerView = Object.Instantiate(prefab, Vector3.zero, Quaternion.identity);
+                Debug.LogError("Player prefab not loaded");
             }
+            _playerView = Object.Instantiate(prefab, Vector3.zero, Quaternion.identity);
 
             return _playerView;
         }
 
-        public static PlayerModel GetPlayerModel()
+        public static Model GetPlayerModel()
         {
-            if (_playerModel == null)
+            if (_model == null)
             {
-                _playerModel = new PlayerModel();
+                _model = new Model();
             }
 
-            return _playerModel;
+            return _model;
         }
 
-        public static PlayerPresenter GetPlayerPresenter()
+        public static Presenter GetPlayerPresenter()
         {
-            if (_playerPresenter == null)
+            if (_presenter == null)
             {
-                _playerPresenter = new PlayerPresenter();
+                _presenter = new Presenter();
             }
 
-            return _playerPresenter;
+            return _presenter;
+        }
+
+        public static CargoView GetActiveCargo()
+        {
+            if (_activeCargo != null) return _activeCargo;
+            
+            var cargoData = Resources.Load<Cargo>("StaticData/Cargo");
+            if (cargoData != null && cargoData.сargoList != null && cargoData.сargoList.Length > 0)
+            {
+                var prefab = cargoData.сargoList[0];
+                var playerView = GetPlayerView();
+                Transform cargoDownPositionTransform = playerView.CargoDownPosition;
+
+                if (cargoDownPositionTransform == null)
+                {
+                    Debug.LogError("Cargo down position not found");
+                }
+                else
+                {
+                    _activeCargo = Object.Instantiate(prefab, cargoDownPositionTransform.position, Quaternion.identity);
+                }
+            }
+            else
+            {
+                Debug.LogError("Cargo data error");
+            }
+
+            return _activeCargo;
         }
     }
 }

@@ -1,21 +1,25 @@
-using Player;
 using UI;
-using UnityEngine;
 
 namespace Management
 {
     public class SceneManager 
     {
-        private static IButton _jumpButton;
+        private static CanvasHandler _canvasHandle;
+        private static SceneData _sceneData;
         
-        public static IButton GetJumpButton()
+        public static void Initiate(CanvasHandler canvasHandler, SceneData sceneData)
         {
-            if (_jumpButton == null)
-            {
-                //var prefab = Resources.Load<PlayerView>(nameof(PlayerView));
-            }
+            _canvasHandle = canvasHandler;
+            _sceneData = sceneData;
+        }
 
-            return _jumpButton;
+        public static CanvasHandler GetCanvas()
+        {
+            return _canvasHandle != null ? _canvasHandle : null;
+        }
+        public static SceneData GetSceneData()
+        {
+            return _sceneData != null ? _sceneData : null;
         }
     }
 }

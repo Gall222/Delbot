@@ -7,5 +7,6 @@ namespace UI
     {
         public GameObject playerSpawnPoint;
         public CinemachineCamera playerCamera;
+        public GameObject[] cargoPrefabList;
     }
 }

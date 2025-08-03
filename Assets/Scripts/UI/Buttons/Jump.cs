@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UI
+namespace UI.Buttons
 {
-    public class JumpButton : MonoBehaviour, IButton, IPointerClickHandler
+    public class Jump : MonoBehaviour, IButton, IPointerClickHandler
     {
         public event EventHandler Clicked;
         
